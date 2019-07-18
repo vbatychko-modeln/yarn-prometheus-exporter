@@ -1,4 +1,6 @@
-FROM scratch
+FROM alpine
 
-COPY ./yarn-prometheus-exporter /yarn-prometheus-exporter
-ENTRYPOINT ["/yarn-prometheus-exporter"]
+RUN apk add libc6-compat
+
+ADD ./yarn-prometheus-exporter /
+ENTRYPOINT /yarn-prometheus-exporter
